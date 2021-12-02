@@ -5,31 +5,31 @@ pipeline {
     kubernetes {
       label 'kubedeploy-agent'
       yaml '''
-      apiVersion: v1
-      kind: Pod
-      spec:
-        containers:
-        - name: kubectl
-          image: eclipsefdn/kubectl:okd-c1
-          command:
-          - cat
-          tty: true
-          resources:
-            limits:
-              cpu: 1
-              memory: 1Gi
-          volumeMounts:
-          - mountPath: "/home/default/.kube"
-            name: "dot-kube"
-            readOnly: false
-        - name: jnlp
-          resources:
-            limits:
-              cpu: 1
-              memory: 1Gi
-        volumes:
-        - name: "dot-kube"
-          emptyDir: {}
+        apiVersion: v1
+        kind: Pod
+        spec:
+          containers:
+          - name: kubectl
+            image: eclipsefdn/kubectl:okd-c1
+            command:
+            - cat
+            tty: true
+            resources:
+              limits:
+                cpu: 1
+                memory: 1Gi
+            volumeMounts:
+            - mountPath: "/home/default/.kube"
+              name: "dot-kube"
+              readOnly: false
+          - name: jnlp
+            resources:
+              limits:
+                cpu: 1
+                memory: 1Gi
+          volumes:
+          - name: "dot-kube"
+            emptyDir: {}
       '''
     }
   }
@@ -66,9 +66,9 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '10'))
   }
 
-  triggers { 
+  triggers {
     // build once a week to keep up with parents images updates
-    cron('H H * * H') 
+    cron('H H * * H')
   }
 
   stages {
