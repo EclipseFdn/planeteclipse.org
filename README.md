@@ -1,5 +1,12 @@
 # planeteclipse.org
 
+---
+**NOTE**
+
+This project was migrated to [Eclipse Gitlab](https://gitlab.eclipse.org/eclipsefdn/it/websites/planeteclipse.org) on March 14, 2022.
+
+---
+
 The [planeteclipse.org](https://planeteclipse.org) website is generated with [Planet Venus](https://github.com/rubys/venus).
 
 Planet Eclipse is a window into the world, work and lives of Eclipse hackers and contributors.
